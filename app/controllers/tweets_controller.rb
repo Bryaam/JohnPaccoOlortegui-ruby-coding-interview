@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
   include Pagination
 
   def index
-    render json: paginate(collection: Tweet.order(created_at: :desc), params: pagination_params)
+    render json: paginate(collection: Tweet.from_user(params[:username]).order(created_at: :desc), params: pagination_params)
   end
 
   private
