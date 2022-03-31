@@ -34,7 +34,9 @@ RSpec.describe "Users", type: :request do
       include_context 'with multiple companies'
 
       it 'returns all the users' do
+        get users_path
 
+        expect(result.map { |element| element['id'] } ).to eq(User.all.ids)
       end
     end
 
